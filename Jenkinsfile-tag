@@ -28,7 +28,8 @@ pipeline {
         sh "cat ./my-folder/manifest.yaml"
         sh "git add ."
         sh "git commit -m 'done by jenkins job tag-pipeline' "
-        sh  'git push https://$user:$encodedPass@github.com/$user/tag.git HEAD:branch'
+        sh "git pull"
+        sh 'git push https://$user:$encodedPass@github.com/$user/tag.git HEAD:branch'
             }
         }
         }
