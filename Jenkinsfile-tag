@@ -42,7 +42,7 @@ pipeline {
                     openshift.withProject("$PROJECT_NAME") {
                         echo "Using project: ${openshift.project()}"
                          sh 'oc project "$PROJECT_NAME"'
-                         sh 'oc apply -f manifest.yaml'
+                         sh 'oc apply -f my-folder/manifest.yaml'
                     }
                  }
             }
