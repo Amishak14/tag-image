@@ -1,7 +1,7 @@
 pipeline {
     agent any
-    parameters { string(name: 'GITHUB_EMAIL', defaultValue: '', description: 'Github Email') 
-                 string(name: 'GITHUB_USERNAME', defaultValue: '', description: 'Github username') }
+   // parameters { string(name: 'GITHUB_EMAIL', defaultValue: '', description: 'Github Email') 
+     //            string(name: 'GITHUB_USERNAME', defaultValue: '', description: 'Github username') }
     stages {
         stage("Checkout") {
             steps {
@@ -21,8 +21,8 @@ pipeline {
 
  
 
-        sh 'git config user.email "${params.GITHUB_EMAIL}"'
-        sh 'git config user.name  "${params.GITHUB_USERNAME}"'
+        sh 'git config user.email "${GITHUB_EMAIL}"'
+        sh 'git config user.name  "${GITHUB_USERNAME}"'
         sh "cat ./my-folder/manifest.yaml"
         echo "${DOCKERTAG}"
         sh "sed -i 's+image-registry.openshift-image-registry.svc:5000/amisha-jenkins/expense-tracker-backend:.*+image-registry.openshift-image-registry.svc:5000/amisha-jenkins/expense-tracker-backend:${DOCKERTAG}+g' ./my-folder/manifest.yaml"
