@@ -25,8 +25,8 @@ pipeline {
         sh 'git config user.name  "${GITHUB_USERNAME}"'
         sh "cat ./my-folder/manifest.yaml"
         echo "${DOCKERTAG}"
-        sh "sed -i 's+image-registry.openshift-image-registry.svc:5000/amisha-jenkins/expense-tracker-backend:.*+image-registry.openshift-image-registry.svc:5000/amisha-jenkins/expense-tracker-backend:${DOCKERTAG}+g' ./my-folder/manifest.yaml"
-        sh "sed -i 's+image-registry.openshift-image-registry.svc:5000/amisha-jenkins/expense-tracker-frontend:.*+image-registry.openshift-image-registry.svc:5000/amisha-jenkins/expense-tracker-frontend:${DOCKERTAG}+g' ./my-folder/manifest.yaml"
+        sh "sed -i 's+image-registry.openshift-image-registry.svc:5000/amisha-jenkins/expense-tracker-backend:.*+image-registry.openshift-image-registry.svc:5000/amisha-jenkins/expense-tracker-backend:${COMMIT_ID}+g' ./my-folder/manifest.yaml"
+        sh "sed -i 's+image-registry.openshift-image-registry.svc:5000/amisha-jenkins/expense-tracker-frontend:.*+image-registry.openshift-image-registry.svc:5000/amisha-jenkins/expense-tracker-frontend:${COMMIT_ID}+g' ./my-folder/manifest.yaml"
         sh "cat ./my-folder/manifest.yaml"
         sh "git add ."
         sh "git commit -m 'done by jenkins job tag-pipeline' "
